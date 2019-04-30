@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { AlertController } from '@ionic/angular';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-tab1',
@@ -11,7 +13,7 @@ export class Tab1Page{
   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
   //Add 'implements OnInit' to the class.
   isGeoLocationFound:boolean;
-  nearestGauge:string;
+  nearestGauge:string = "BPN2";
   gauges=["Gauge1","Gauge2","Gauge3"];
 
   constructor (
@@ -76,5 +78,9 @@ export class Tab1Page{
     });
   
     await alert.present();
+  }
+
+  onSubmit(form:NgForm){
+    console.log(form);
   }
 }

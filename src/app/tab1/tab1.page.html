@@ -7,34 +7,41 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label position="floating">Gauge Name</ion-label>
-      <ion-select>
-        <ion-select-option *ngFor="let gauge of gauges" [selected]="gauge === nearestGauge">{{gauge}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Height</ion-label>
-      <ion-input type="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Date</ion-label>
-      <ion-input type="date"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Time</ion-label>
-      <ion-input type="time"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Is Bubble Level Okay?</ion-label>
-      <ion-select>
-        <ion-select-option>Yes</ion-select-option>
-        <ion-select-option selected>No</ion-select-option>
-        <ion-select-option>I Don't Know</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Gauge Name</ion-label>
+        <ion-select  [(ngModel)]="nearestGauge" name="gauge" required>
+          <ion-select-option *ngFor="let gauge of gauges" [selected]="gauge === nearestGauge">{{gauge}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Height</ion-label>
+        <ion-input type="number" ngModel name="height" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Date</ion-label>
+        <ion-input type="date" ngModel name="date" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Time</ion-label>
+        <ion-input type="time" ngModel name="time" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating" >Is Bubble Level Okay?</ion-label>
+        <ion-select ngModel name="isBubbleLevelOkay" required>
+          <ion-select-option value="Yes" selected>Yes</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+          <ion-select-option value="I Do Not Know">I Don't Know</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating" >Notes</ion-label>
+        <ion-input type="textarea" ngModel name="notes"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button type="submit" color="primary" expand="block" [disabled] ="!f.valid">Add Measurement</ion-button>
+  </form>
 
     
 </ion-content>
