@@ -38,7 +38,7 @@ export class Tab1Page{
     this.getCurrentDateTime()
     this.getAllGauges();
     this.getLocation();
-    if(this.isGeoLocationFound){
+    if(!this.isGeoLocationFound){
         this.presentAlertPrompt();
     }
     else{
