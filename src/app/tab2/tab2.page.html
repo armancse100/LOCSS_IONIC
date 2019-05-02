@@ -1,9 +1,40 @@
 <ion-header>
+    
   <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button  text="Back" defaultHref="/tabs/tab1"></ion-back-button>
+        </ion-buttons>
     <ion-title>
-      Tab Two
+      List of Gauges
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content no-padding>
+       <ion-grid>
+         <ion-row>
+           <ion-col><ion-item style="color:blue" [href]="'/home'">Map View</ion-item></ion-col>
+           
+         </ion-row>
+       </ion-grid>
+	     <ion-grid>
+          <ion-row style="font-weight: bold;">
+            <!-- <ion-col>Gauge ID</ion-col> -->
+            <ion-col>Gauge Name</ion-col>
+             <ion-col>Distance</ion-col>
+            
+          </ion-row>
+         
+          <ion-row *ngFor="let gauge of gauges" >
+          
+              <!-- <ion-col style="color: #92a8d1;border-style: solid;
+              border-width: 2px;">{{gauge['gauge_id']}}</ion-col> -->
+              <ion-col no-padding><ion-item no-margin [href]="'tabs/tab3/'+gauge['id']+'/'+gauge['name']" routerDirection="forward">  <div no-margin no-padding>{{gauge['name']}}</div></ion-item></ion-col>
+              <ion-col no-padding><ion-item no-margin [href]="'tabs/tab3/'+gauge['id']+'/'+gauge['name']" routerDirection="forward"> {{gauge['distance']}}</ion-item></ion-col>
+             
+          </ion-row>
+       
+        </ion-grid>
+
+
+</ion-content>

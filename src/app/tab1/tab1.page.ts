@@ -34,6 +34,7 @@ export class Tab1Page{
     ){}
 
   ngOnInit(){
+    
     this.getCurrentDateTime()
     this.getAllGauges();
     this.getLocation();
@@ -141,6 +142,6 @@ export class Tab1Page{
      }, error => {
       console.log(error);
     });
-    this.router.navigateByUrl('tabs/tab3/'+form.value['gauge_inc_id']+'/'+this.nearestGaugeID);
+    this.router.navigateByUrl('tabs/tab3/'+form.value['gauge_inc_idgit ']+'/'+this.nearestGaugeID);
   }
 }
