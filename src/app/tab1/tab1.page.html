@@ -11,25 +11,26 @@
     <ion-list>
       <ion-item>
         <ion-label position="floating">Gauge Name</ion-label>
-        <ion-select  [(ngModel)]="nearestGauge" name="gauge" required>
-          <ion-select-option *ngFor="let gauge of gauges" [selected]="gauge === nearestGauge">{{gauge}}</ion-select-option>
+        <ion-select  [(ngModel)]="nearestGaugeIncID" name="gauge_inc_id" required>
+          <ion-select-option *ngFor="let gauge of gauges" value="{{gauge.id}}">{{gauge.gauge_id}}</ion-select-option>
         </ion-select>
       </ion-item>
+  
       <ion-item>
         <ion-label position="floating">Height</ion-label>
         <ion-input type="number" ngModel name="height" required></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Date</ion-label>
-        <ion-input type="date" ngModel name="date" required></ion-input>
+        <ion-input type="date" [(ngModel)]="date" name="date"  required></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Time</ion-label>
-        <ion-input type="time" ngModel name="time" required></ion-input>
+        <ion-input type="time" [(ngModel)]="time" name="time" required></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating" >Is Bubble Level Okay?</ion-label>
-        <ion-select ngModel name="isBubbleLevelOkay" required>
+        <ion-select [(ngModel)]="isBubbleLevelOkay" name="is_bubble_level_okay" required>
           <ion-select-option value="Yes" selected>Yes</ion-select-option>
           <ion-select-option value="No">No</ion-select-option>
           <ion-select-option value="I Do Not Know">I Don't Know</ion-select-option>
