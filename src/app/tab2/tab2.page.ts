@@ -17,35 +17,48 @@ export class Tab2Page {
 
 	ngOnInit(){
       this.splash.show();
+      this.getLocation();
       this.getAllGauges();
       this.splash.hide();
 	}
 
 	getAllGauges(){
-	   this.http.get('http://liquidearthlake.org/json/getalldistances/'+this.lat+'/'+this.long)
-      .subscribe((data : any) =>
-      {
-        
-        console.log(data);
-        this.gauges=data;
-         
-      },
-      (error : any) =>
-      {
-         console.log(error);
-      });
+     console.log(this.lat);
+	 
   }
   
   getLocation(){
     this.geolocation.getCurrentPosition().then((resp) => {
-      this.lat=resp.coords.latitude;
-      this.long=resp.coords.longitude;
+        this.http.get('http://liquidearthlake.org/json/getalldistances/'+resp.coords.latitude+'/'+resp.coords.longitude)
+        .subscribe((data : any) =>
+        {
+          
+          console.log(data);
+          this.gauges=data;
+          
+        },
+        (error : any) =>
+        {
+          console.log(error);
+        });  
+   
       // resp.coords.latitude
       // resp.coords.longitude
      }).catch((error) => {
-       this.lat=35.9049;
-       this.long=-79.0469;
+       
        console.log('Error getting location', error);
+       this.http.get('http://liquidearthlake.org/json/getalldistances/'+35.9049+'/'+-79.0469)
+       .subscribe((data : any) =>
+       {
+         
+         console.log(data);
+         this.gauges=data;
+         
+       },
+       (error : any) =>
+       {
+         console.log(error);
+       });  
      });
      
  
