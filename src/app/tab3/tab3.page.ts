@@ -19,9 +19,11 @@ export class Tab3Page {
   barChart: any;
   data: any;
   name:any;
+  loadAllData:boolean;
 
 
   ngOnInit() {
+    this.loadAllData=false;
     this.splash.show();
     this.getReadings();
     this.getReadingsForTable();
@@ -157,6 +159,10 @@ export class Tab3Page {
 
   formatedate(date){
     return moment().format(date);
+  }
+
+  LoadAllReadings(){
+      this.loadAllData=true;
   }
 
   
