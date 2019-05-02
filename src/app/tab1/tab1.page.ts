@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 
 
@@ -28,7 +29,8 @@ export class Tab1Page{
   constructor (
     private geolocation:Geolocation,
     private alertController:AlertController,
-    private http:HttpClient
+    private http:HttpClient,
+    private router:Router
     ){}
 
   ngOnInit(){
@@ -133,11 +135,12 @@ export class Tab1Page{
 
   onSubmit(form:NgForm){
     console.log(form);
-    this.http.post("http://liquidearthlake.org/reading/store", form.value)
+    this.http.post("http://liquidearthlake.org/json/reading/store", form.value)
     .subscribe(data => {
       console.log(data['_body']);
      }, error => {
       console.log(error);
     });
+    this.router.navigateByUrl('tabs/tab3/'+form.value['gauge_inc_id']+'/'+this.nearestGaugeID);
   }
 }
