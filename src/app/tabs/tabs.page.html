@@ -1,54 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button text="Back" defaultHref="/tabs/tab2"></ion-back-button>
-        </ion-buttons>
-      
-    <ion-title>
-        {{name}}
-    </ion-title>
-  </ion-toolbar> 
-  
+<ion-tabs>
 
-</ion-header>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="tab1">
+      <ion-icon name="flash"></ion-icon>
+      <ion-label>Add Measurement</ion-label>
+    </ion-tab-button>
 
-<ion-content>
+    <ion-tab-button tab="tab2">
+      <ion-icon name="apps"></ion-icon>
+      <ion-label>View Data</ion-label>
+    </ion-tab-button>
 
  
+  </ion-tab-bar>
 
-  <ion-card>
-   
-    <ion-card-content zooming="true" direction="xy"> 
-      <canvas #barCanvas></canvas>
-    </ion-card-content>
-  </ion-card>
-
-
-
-  <ion-card>
-    
-    <ion-card-header>
-      {{name}}
-    </ion-card-header>
-    <ion-card-content>
-
-     
-      <ion-grid zooming="true" direction="xy" border="1">
-        <ion-row style="font-weight: bold;">
-          <ion-col>Date</ion-col>
-          <ion-col>Height</ion-col>
-        </ion-row>
-        <ion-row *ngFor="let dat of data">
-            <ion-col style="color: #92a8d1;border-style: solid;
-            border-width: 2px;">{{dat['date']}}</ion-col>
-            <ion-col style="color: green;border-style: solid;
-            border-width: 2px;">{{dat['height']}}</ion-col>
-          </ion-row>
-      </ion-grid>
-     
-    </ion-card-content>
-  </ion-card>
- 
-
-</ion-content>
-
+</ion-tabs>

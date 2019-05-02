@@ -24,6 +24,7 @@ export class Tab3Page {
   ngOnInit() {
     this.splash.show();
     this.getReadings();
+    this.getReadingsForTable();
     this.splash.hide();
     
     //this.drawGraph();
@@ -35,19 +36,33 @@ export class Tab3Page {
     
 
  // }
-
+  getReadingsForTable(){
+    let id=this.route.snapshot.paramMap.get('id');
+    this.http.get('http://liquidearthlake.org/json/getjsondatasixm/'+id)
+      .subscribe((data : any) =>
+      {
+        this.data=data;
+       console.log(data);
+     
+        
+      },
+      (error : any) =>
+      {
+        console.log(error);
+      });
+  }
   getReadings(){
     var scale_size=15;
     var reading_date=[];
     var reading_height=[];
-    var id=this.route.snapshot.paramMap.get('id');
+    let id=this.route.snapshot.paramMap.get('id');
     this.name=this.route.snapshot.paramMap.get('name');
     this.http
     .get('http://liquidearthlake.org/gauge/getjsondatasixm?gauge_inc_id='+id)
     .subscribe((data : any) =>
     {
-        this.data =data;
-        //console.log(this.data);
+        //this.data =data;
+        console.log(this.data);
         
         for (var i=0;i<data.length;++i)
         {
@@ -122,7 +137,7 @@ export class Tab3Page {
                     },
                     scaleLabel: {
                         display: true,
-                        labelString: "Lake Height",
+                        labelString: "Height(Feet)",
                         fontColor: "green"
                     }
                 }]
