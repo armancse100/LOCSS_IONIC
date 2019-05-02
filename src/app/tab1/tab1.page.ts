@@ -135,6 +135,7 @@ export class Tab1Page{
   }
 
   onSubmit(form:NgForm){
+    this.nearestGauge= this.gauges.filter(m => m.id == form.value['gauge_inc_id']);
     console.log(form);
     this.http.post("http://liquidearthlake.org/json/reading/store", form.value)
     .subscribe(data => {
@@ -142,6 +143,11 @@ export class Tab1Page{
      }, error => {
       console.log(error);
     });
-    this.router.navigateByUrl('tabs/tab3/'+form.value['gauge_inc_idgit ']+'/'+this.nearestGaugeID);
+    console.log(this.gauges);
+    
+    console.log(this.nearestGauge[0].gauge_id);
+    this.router.navigateByUrl('tabs/tab3/'+form.value['gauge_inc_id']+'/'+this.nearestGauge[0].gauge_id);
   }
+
+ 
 }

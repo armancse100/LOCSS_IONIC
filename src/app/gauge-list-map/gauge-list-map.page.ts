@@ -93,14 +93,14 @@ addMarker(lat,lng,label,id,name) {
   var infoWindow = new google.maps.InfoWindow({
       content: label
   });
-  marker.addListener("click",function () {
+  /*marker.addListener("click",function () {
       infoWindow.open(this.map,marker);
   });
   marker.addListener("mouseout",function () {
       infoWindow.close();
-  });
+  });*/
   console.log('tabs/tab3/'+id+'/'+name);
-  marker.addListener('dblclick', ()=> {
+  marker.addListener('click', ()=> {
     this.router.navigateByUrl('tabs/tab3/'+id+'/'+name);
 
   });
