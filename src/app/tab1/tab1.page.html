@@ -6,13 +6,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding class="background-image">
   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
     <ion-list>
       <ion-item>
         <ion-label position="floating">Gauge Name</ion-label>
         <ion-select  [(ngModel)]="nearestGaugeIncID" name="gauge_inc_id" required>
-          <ion-select-option *ngFor="let gauge of gauges" value="{{gauge.id}}">{{gauge.gauge_id}}</ion-select-option>
+          <ion-select-option *ngFor="let gauge of gauges" value="{{gauge.id}}">{{gauge.gauge_id + ' (' + gauge.name + ')'}}</ion-select-option>
+
         </ion-select>
       </ion-item>
   

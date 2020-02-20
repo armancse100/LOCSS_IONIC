@@ -28,6 +28,7 @@ export class Tab2Page {
   }
   
   getLocation(){
+   
     this.geolocation.getCurrentPosition().then((resp) => {
         this.http.get('http://liquidearthlake.org/json/getalldistances/'+resp.coords.latitude+'/'+resp.coords.longitude)
         .subscribe((data : any) =>
@@ -61,7 +62,6 @@ export class Tab2Page {
        });  
      });
      
- 
   }
 }
 

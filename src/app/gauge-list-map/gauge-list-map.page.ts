@@ -43,12 +43,13 @@ locate(){
       //console.log(resp.coords.latitude);
       //this.lat=resp.coords.latitude;
       //this.long=resp.coords.longitude;
-      //let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
-      let latLng = new google.maps.LatLng(36.183670857, -85.507753);
+      let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+      //let latLng = new google.maps.LatLng(36.183670857, -85.507753);
       console.log(this.long);
-      let mapOptions = {
-        //center:latLng,
-        center: {lat: 35.1085, lng:-77.0441},
+      
+	  let mapOptions = {
+        center:latLng,
+        // center: {lat: 35.1085, lng:-77.0441},
         zoom: 8,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }

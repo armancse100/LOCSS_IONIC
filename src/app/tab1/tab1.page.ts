@@ -126,6 +126,7 @@ export class Tab1Page{
     
       this.gauges=data;
       console.log(data);
+
       
     },
     (error : any) =>

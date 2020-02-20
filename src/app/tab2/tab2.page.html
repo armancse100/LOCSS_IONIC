@@ -19,7 +19,7 @@
        </ion-grid>
 	     <ion-grid>
           <ion-row style="font-weight: bold;">
-            <!-- <ion-col>Gauge ID</ion-col> -->
+             <ion-col>Gauge ID</ion-col> 
             <ion-col>Gauge Name</ion-col>
              <ion-col>Distance (Mile)</ion-col>
             
@@ -29,6 +29,7 @@
           
               <!-- <ion-col style="color: #92a8d1;border-style: solid;
               border-width: 2px;">{{gauge['gauge_id']}}</ion-col> -->
+              <ion-col no-padding><ion-item no-margin [href]="'tabs/tab3/'+gauge['id']+'/'+gauge['name']" routerDirection="forward">  <div no-margin no-padding>{{gauge['gauge_id']}}</div></ion-item></ion-col>
               <ion-col no-padding><ion-item no-margin [href]="'tabs/tab3/'+gauge['id']+'/'+gauge['name']" routerDirection="forward">  <div no-margin no-padding>{{gauge['name']}}</div></ion-item></ion-col>
               <ion-col no-padding><ion-item no-margin [href]="'tabs/tab3/'+gauge['id']+'/'+gauge['name']" routerDirection="forward"> {{gauge['distance']}}</ion-item></ion-col>
              
