@@ -20,6 +20,7 @@ export class GaugeListMapPage{
   gauge_data:any;
   error:any;
   loading:any;
+  resp:any;
 
 constructor(public loadingcontrl: LoadingController, private splash: SplashScreen, private geolocation: Geolocation, private platform: Platform,private http: HttpClient, private navctrl: NavController, private router: Router) {}
 
@@ -43,7 +44,7 @@ locate(){
       //console.log(resp.coords.latitude);
       //this.lat=resp.coords.latitude;
       //this.long=resp.coords.longitude;
-      let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+      let latLng = new google.maps.LatLng(this.resp.coords.latitude, this.resp.coords.longitude);
       //let latLng = new google.maps.LatLng(36.183670857, -85.507753);
       console.log(this.long);
       
